@@ -26,14 +26,18 @@ picture_dir = path + now_string
 picture_dir = make_dir(picture_dir)
 
 camera = PiCamera()
-camera.resolution = (3280, 2464)
+# 2x2 binned (2 megapixels)
+camera.resolution = (1640, 1232)
+# full resolution (8 megapixels)
+#camera.resolution = (3280, 2464)
 camera.rotation = (270)
 camera.meter_mode = 'matrix'
-delay = 1
+# minimum time between images in seconds
+delay = 0.25
 
 with working_directory(picture_dir):
     for i, filename in enumerate(camera.capture_continuous('image{counter:06d}.jpg')):
         sleep(delay)
-        if i == 2:
-            break
+#        if i == 2:
+#            break
 
