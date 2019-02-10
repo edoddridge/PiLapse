@@ -30,13 +30,16 @@ def run_timelapse():
 
     camera = PiCamera()
     # 2x2 binned (2 megapixels)
-    camera.resolution = (1640, 1232)
+    # camera.resolution = (1640, 1232)
     # full resolution (8 megapixels)
-    #camera.resolution = (3280, 2464)
+    camera.resolution = (3280, 2464)
     camera.rotation = (270)
-    camera.meter_mode = 'matrix'
+    camera.meter_mode = 'spot'#'matrix'
     # minimum time between images in seconds
     delay = 0.25
+
+    # pause to allow me to get bike sorted out
+    sleep(15)
 
     with working_directory(picture_dir):
         for i, filename in enumerate(camera.capture_continuous('image{counter:06d}.jpg')):
