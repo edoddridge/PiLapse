@@ -16,3 +16,13 @@ To turn the series of jpg files into a movie with `ffmpeg`
 Or, with motion interpolation to smooth the footage:
 
 `ffmpeg -r 10 -start_number 23 -i image%6d.jpg  -filter:v minterpolate -b:v 40M -vf eq=brightness=0.08 -r 30 video.avi`
+
+# How to stream video from the Pi
+Can be useful to sort out the focus. This solution works right out of the box, without installing additional software on the PI.
+
+On the PI:
+raspivid -t 0 -l -o tcp://0.0.0.0:3333
+
+On the Computer, one can stream with VLC:
+vlc tcp/h264://192.168.66.154:3333
+(assuming 192.168.66.154 is the PI's IP address)
