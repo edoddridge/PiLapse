@@ -21,8 +21,8 @@ Or, with motion interpolation to smooth the footage:
 Can be useful to sort out the focus. This solution works right out of the box, without installing additional software on the PI.
 
 On the PI:
-raspivid -t 0 -l -o tcp://0.0.0.0:3333
+`raspivid -t 0 -l -o tcp://0.0.0.0:3333`
 
 On the Computer, one can stream with VLC:
-vlc tcp/h264://192.168.66.154:3333
+`vlc tcp/h264://192.168.66.154:3333`
 (assuming 192.168.66.154 is the PI's IP address)
