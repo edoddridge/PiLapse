@@ -11,11 +11,11 @@ There are other options, but they run the script as root, which means you need t
 # Make a movie
 To turn the series of jpg files into a movie with `ffmpeg`
 
-`ffmpeg -r 10 -start_number 23 -i image%6d.jpg  -b:v 40M -vf eq=brightness=0.08 -r 30 video.avi`
+`ffmpeg -r 15 -start_number 4 -i image%6d.jpg -vcodec libx264 -pix_fmt yuv420p -s 3280x2464 -b:v 40M -vf eq=brightness=0.08 -r 15 video.mp4`
 
 Or, with motion interpolation to smooth the footage:
 
-`ffmpeg -r 10 -start_number 23 -i image%6d.jpg  -filter:v minterpolate -b:v 40M -vf eq=brightness=0.08 -r 30 video.avi`
+`ffmpeg -r 15 -start_number 4 -i image%6d.jpg -vcodec libx264 -pix_fmt yuv420p -s 3280x2464 -b:v 40M -vf "eq=brightness=0.08, minterpolate" -r 15 video_2.mp4`
 
 # How to stream video from the Pi
 Can be useful to sort out the focus. This solution works right out of the box, without installing additional software on the PI.
